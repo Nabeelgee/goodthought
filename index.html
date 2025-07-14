@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Thoughts</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      padding: 40px 30px;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+    #thought {
+      font-size: 1.4rem;
+      color: #444;
+      min-height: 100px;
+      margin-bottom: 30px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #ff7f50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #e6673e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌟 Thought of the Moment</h1>
+    <div id="thought">Click the button to see a good thought!</div>
+    <button onclick="showThought()">New Thought</button>
+  </div>
+
+  <script>
+    const thoughts = [
+      "Believe in yourself and all that you are.",
+      "A positive attitude brings positive results.",
+      "Every day is a fresh start.",
+      "Difficult roads often lead to beautiful destinations.",
+      "Don’t wait for opportunity. Create it.",
+      "Be the reason someone smiles today.",
+      "You are stronger than you think.",
+      "Focus on progress, not perfection.",
+      "Make today so awesome that yesterday gets jealous.",
+      "Small steps every day lead to big changes.",
+      "Success is the sum of small efforts repeated daily.",
+      "Stay away from negative people. They have a problem for every solution.",
+      "Work hard in silence. Let success make the noise.",
+      "Kindness is free. Sprinkle that stuff everywhere.",
+      "Be humble. Be hungry. Be fearless.",
+      "Let your dreams be bigger than your fears.",
+      "Life is 10% what happens to you and 90% how you react to it.",
+      "The secret of getting ahead is getting started.",
+      "Success doesn’t come from what you do occasionally. It comes from what you do consistently.",
+      "Happiness is a direction, not a place.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Great things never come from comfort zones.",
+      "Doubt kills more dreams than failure ever will.",
+      "Your life is your message to the world. Make sure it’s inspiring.",
+      "The best view comes after the hardest climb.",
+      "Don’t let yesterday take up too much of today.",
+      "Be so good they can't ignore you.",
+      "Make your life a masterpiece.",
+      "Your mindset determines your future.",
+      "You only fail when you stop trying.",
+      "Be the change that you wish to see in the world.",
+      "Choose kindness and laugh often.",
+      "Don’t watch the clock. Do what it does. Keep going.",
+      "Stay positive. Work hard. Make it happen.",
+      "If not now, then when?",
+      "The harder you work, the luckier you get.",
+      "Be proud of how far you’ve come.",
+      "There is no substitute for hard work.",
+      "Dreams don’t work unless you do.",
+      "Success is no accident.",
+      "It always seems impossible until it’s done.",
+      "Chase your passion, not your pension.",
+      "Do something today that your future self will thank you for.",
+      "Don’t limit your challenges. Challenge your limits.",
+      "You become what you believe.",
+      "Life isn’t about waiting for the storm to pass. It’s about learning to dance in the rain.",
+      "Good things take time.",
+      "Where focus goes, energy flows.",
+      "Winners are not people who never fail, but people who never quit.",
+      "Rise above the storm and you will find the sunshine.",
+      "Strive for progress, not perfection.",
+      "Don’t be afraid to give up the good to go for the great.",
+      "Your only limit is your mind.",
+      "Create the life you can’t wait to wake up to.",
+      "Believe you deserve it and the universe will serve it.",
+      "What you do today can improve all your tomorrows.",
+      "Don’t quit. Suffer now and live the rest of your life as a champion.",
+      "Stay patient and trust your journey.",
+      "You are the artist of your own life. Don’t hand the paintbrush to anyone else.",
+      "Fall seven times, stand up eight.",
+      "There’s no elevator to success — you have to take the stairs.",
+      "Just one small positive thought in the morning can change your whole day.",
+      "Your vibe attracts your tribe.",
+      "Never stop learning, because life never stops teaching.",
+      "Make your passion your paycheck.",
+      "Be brave enough to be bad at something new.",
+      "Do what you love, and you’ll never work a day in your life.",
+      "Stop doubting yourself. Work hard, and make it happen.",
+      "If you want different results, do something different.",
+      "Success starts with self-discipline.",
+      "You don’t have to be great to start, but you have to start to be great.",
+      "Success is liking yourself, liking what you do, and liking how you do it.",
+      "What feels like the end is often the beginning.",
+      "Don’t wait. The time will never be just right.",
+      "Your dreams don’t have an expiration date.",
+      "Live less out of habit and more out of intent.",
+      "It’s not about being the best. It’s about being better than you were yesterday.",
+      "Energy flows where attention goes.",
+      "Always find time for the things that make you feel happy to be alive.",
+      "Be led by the dreams in your heart.",
+      "Wake up with determination. Go to bed with satisfaction.",
+      "Progress is progress, no matter how small.",
+      "You’ve got this.",
+      "If opportunity doesn’t knock, build a door.",
+      "It’s never too late to start something new.",
+      "Stay strong, the weekend is coming.",
+      "Let your smile change the world.",
+      "Shine like the whole universe is yours.",
+      "You are enough just as you are.",
+      "Sometimes you win, sometimes you learn.",
+      "Don’t just exist, live.",
+      "If it matters to you, you’ll find a way.",
+      "Stay foolish to stay sane.",
+      "Be a voice, not an echo.",
+      "Hustle until your haters ask if you're hiring.",
+      "The best is yet to come."
+    ];
+
+    function showThought() {
+      const random = Math.floor(Math.random() * thoughts.length);
+      document.getElementById("thought").textContent = thoughts[random];
+    }
+
+    window.onload = showThought;
+  </script>
+</body>
+</html>
